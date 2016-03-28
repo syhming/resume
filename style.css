@@ -1,0 +1,149 @@
+body, div, ul, li, p, h1, h2, h3, h4 ,h5 ,h6{
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+.clear-fix {
+    overflow: auto;
+}
+
+
+.education-entry, .work-entry, .project-entry {
+    padding: 0 5%;
+}
+
+h1, h2, h3, h4, .blue-text{
+  color: #002b80;
+}
+
+h1 {
+    font-size: 40px;
+    line-height: 48px;
+    display: inline;
+}
+
+h2 {
+    font-size: 24px;
+    line-height: 29px;
+    padding: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    line-height: 22px;
+}
+
+h4 {
+    font-size: 14px;
+    line-height: 17px;
+}
+
+h2, h3, h4, h5 {
+    padding: 10px 5%;
+}
+
+.date-text {
+    font-size: 14px;
+    color: #999;
+    line-height: 16px;
+    float: left;
+}
+
+.location-text {
+    font-size: 14px;
+    color: #999;
+    line-height: 16px;
+    float: right;
+}
+
+p {
+    font-size: 14px;
+    color: #333;
+    line-height: 21px;
+}
+
+a {
+    color: #1199c3;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+}
+
+#skills-h3 {
+    color: #002b80;
+    display: none;
+}
+
+
+/*maybe change the header's background color*/
+
+.flex-box {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+.center-content [
+    padding: 2.5% 5%;
+]
+
+ul {
+    list-style-type: none;
+}
+
+.biopic {
+    float: left;
+    padding: 10px;
+    width: 250px;
+    display: none;
+}
+
+img {
+    padding: 10px;
+}
+
+span {
+    padding: 5px;
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+}
+
+@media only screen and (max-width: 900px) {
+    .biopic {
+        width: 175px;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .biopic {
+        width: 150px;
+    }
+    .welcome-message {
+        display: none;
+    }
+}
+
+#map {
+    display: block;
+    height: 100%;
+    margin: 0 5%;
+}
+
+#mapDiv {
+    height: 400px;
+    width: 100%;
+    padding-bottom: 5%;
+}
+
+@media only screen and (min-width: 750px) {
+    #skills-h3, .biopic {
+        display: block;
+    }
+}
