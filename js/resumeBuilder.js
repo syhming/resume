@@ -21,7 +21,7 @@ var bio = {
         "location": "Holland, MI"
     },
     "skills":
-        ["HTML", "CSS", "javascript", "illustration", "painting", "photography"],
+        ["HTML", "CSS", "javascript", "illustration", "painting", "photography", "drawing"],
     "bioPic": "images/syhming.jpg"
 };
 
@@ -104,7 +104,6 @@ var projects = {
     ]
 };
 
-
 /*saw this cool function in a project I looked at.
 It helped simply some code and provided a way for me to make the titles into links*/
 function replaceAndAppend(rawHTML, target, insertion, destination, insertionUrl, urlTarget){
@@ -118,13 +117,13 @@ function replaceAndAppend(rawHTML, target, insertion, destination, insertionUrl,
 };
 
 function displayBio() {
-    replaceAndAppend(HTMLheaderName, '%data%', bio.name, $('#header'));
-    replaceAndAppend(HTMLheaderRole,'%data%', bio.role, $('#header'));
-    replaceAndAppend(HTMLemail, '%data%', bio.contacts.email.name, $('#header'), bio.contacts.email.url, '#');
-    replaceAndAppend(HTMLgithub,'%data%', bio.contacts.github.name, $('#header'), bio.contacts.github.url, '#');
-    replaceAndAppend(HTMLtwitter, '%data%', bio.contacts.twitter.name, $('#header'), bio.contacts.twitter.url, '#');
-    replaceAndAppend(HTMLlocation, '%data%', bio.contacts.location, $('#header'));
-    replaceAndAppend(HTMLwelcomeMsg, '%data%', bio.welcomeMessage, $('#header'));
+    replaceAndAppend(HTMLheaderName, '%data%', bio.name, $('#topContacts'));
+    replaceAndAppend(HTMLheaderRole,'%data%', bio.role, $('#topContacts'));
+    replaceAndAppend(HTMLemail, '%data%', bio.contacts.email.name, $('#topContacts'), bio.contacts.email.url, '#');
+    replaceAndAppend(HTMLgithub,'%data%', bio.contacts.github.name, $('#topContacts'), bio.contacts.github.url, '#');
+    replaceAndAppend(HTMLtwitter, '%data%', bio.contacts.twitter.name, $('#topContacts'), bio.contacts.twitter.url, '#');
+    replaceAndAppend(HTMLlocation, '%data%', bio.contacts.location, $('#topContacts'));
+    replaceAndAppend(HTMLwelcomeMsg, '%data%', bio.welcomeMessage, $('#topContacts'));
 
 //change skills to chart from a list.  use d3 js
         $('#header').append(HTMLskillsStart);
@@ -141,9 +140,10 @@ function displayBio() {
         $('#skills').append(formattedSkills);
         var formattedSkills = HTMLskills.replace('%data%', bio.skills[5]);
         $('#skills').append(formattedSkills);
+        var formattedSkills = HTMLskills.replace('%data%', bio.skills[6]);
+        $('#skills').append(formattedSkills);
 
-
-
+        $('#skills').append(pie);
 
     var formattedBioPic = HTMLbioPic.replace('%data%', bio.bioPic);
     $('#header').append(formattedBioPic);
@@ -185,19 +185,12 @@ function displayProjects() {
     for (item in projects.project){
         $('#projects').append(HTMLprojectStart);
 
-        var formattedProjectTitle = HTMLprojectTitle.replace('%data%', projects.project[item].title);
-        var formattedProjectDates = HTMLprojectDates.replace('%data%', projects.project[item].dates);
-        var formattedProjectDescription = HTMLprojectDescription.replace('%data%', projects.project[item].description);
-
-        $('.project-entry:last').append(formattedProjectTitle);
-        $('.project-entry:last').append(formattedProjectDates);
-        $('.project-entry:last').append(formattedProjectDescription);
+        replaceAndAppend(HTMLprojectTitle, '%data%', projects.project[item].title, $('.project-entry:last'));
+        replaceAndAppend(HTMLprojectDates, '%data%', projects.project[item].dates, $('.project-entry:last'));
+        replaceAndAppend(HTMLprojectDescription, '%data%', projects.project[item].description, $('.project-entry:last'));
 
         if (projects.project[item].image.length > 0) {
-            for (image in projects.projects[item].image) {
-                var formattedImage = HTMLprojectImage.replace('%data%', projects.project[item].image[image]);
-                $('.project-entry:last').append(formattedImage);
-            }
+            replaceAndAppend(HTMLprojectImage, '%data%', projects.project[item].image, $('.project-entry:last'));
         }
     }
 };
