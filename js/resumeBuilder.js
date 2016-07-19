@@ -29,9 +29,9 @@ bio.display = function() {
     //TODO make github and twitter links aligned with the rest of contacts
     var headerEmail = HTMLemail.replace('%data%', bio.contacts.email);
     $('#topContacts').append(headerEmail);
-    var headerGithub = HTMLgithub.replace('%data%', bio.contacts.github.name);
+    var headerGithub = HTMLgithub.replace('%data%', bio.contacts.github.name).replace('#', bio.contacts.github.url);
     $('#topContacts').append(headerGithub);
-    var headerTwitter = HTMLtwitter.replace('%data%', bio.contacts.twitter.name);
+    var headerTwitter = HTMLtwitter.replace('%data%', bio.contacts.twitter.name).replace('#', bio.contacts.twitter.url);
     $('#topContacts').append(headerTwitter);
     var headerLocation = HTMLlocation.replace('%data%', bio.contacts.location);
     $('#topContacts').append(headerLocation);
@@ -56,7 +56,7 @@ bio.display = function() {
     $('#footerContacts').append(headerTwitter);
     $('#footerContacts').append(headerGithub);
 
-    //$("a[target='_blank']").css({'color': '#fff', 'margin-top': '-10px', 'padding': '5px'});
+    $("a[target='_blank']").css({'color': '#fff', 'margin-top': '-10px', 'padding': '5px 0 0 0'});
 }
 bio.display();
 
@@ -175,7 +175,9 @@ education.display = function() {
 
     }
     // TODO: "Online Courses" header aligned the same as classes
+
       $('.education-entry:last').append(HTMLonlineClasses);
+      $(":contains('Courses')").removeAttr("padding");
     for (var course = 0; course < education.onlineCourses.length; course++){
       var formattedOnlineTitle = HTMLonlineTitle.replace('%data%', education.onlineCourses[course].title);
       var formattedOnlineSchool = HTMLonlineSchool.replace('%data%', education.onlineCourses[course].site);
