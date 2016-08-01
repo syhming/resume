@@ -111,7 +111,8 @@ var education = {
         "location": "East Lansing, MI, US",
         "degree": "BFA",
         "majors": "Studio Art",
-        "dates": "2007 - 2008"
+        "dates": "2007 - 2008",
+        "url": "https://msu.edu"
     }],
     "onlineCourses": [{
         "school": "Udacity",
@@ -135,7 +136,7 @@ education.display = function() {
     if (education.schools.length) {
         for (var school = 0; school < education.schools.length; school++) {
             $('#education').append(HTMLschoolStart);
-            var schoolName = HTMLschoolName.replace('%data%', education.schools[school].school);
+            var schoolName = HTMLschoolName.replace('%data%', education.schools[school].school).replace('#', education.schools[school].url);
             var schoolDegree = HTMLschoolDegree.replace('%data%', education.schools[school].degree);
             var schoolNameDegree = schoolName + schoolDegree;
             $('.education-entry:last').append(schoolNameDegree);
@@ -165,7 +166,7 @@ education.display();
 
 /* projects section: what i've done, images of projects, etc */
 var projects = {
-    "project": [{
+    "projects": [{
         "title": "Portfolio Site",
         "dates": "August 2015 - September 2015",
         "description": "First project for the Udacity Nanodegree.  I learned to create a portfolio site using HTML and CSS.",
@@ -187,21 +188,21 @@ var projects = {
 };
 
 projects.display = function() {
-    for (var item = 0; item < projects.project.length; item++) {
+    for (var item = 0; item < projects.projects.length; item++) {
         $('#projects').append(HTMLprojectStart);
 
-        var projectTitle = HTMLprojectTitle.replace('%data%', projects.project[item].title);
+        var projectTitle = HTMLprojectTitle.replace('%data%', projects.projects[item].title);
         $('.project-entry:last').append(projectTitle);
-        var projectDates = HTMLprojectDates.replace('%data%', projects.project[item].dates);
+        var projectDates = HTMLprojectDates.replace('%data%', projects.projects[item].dates);
         $('.project-entry:last').append(projectDates);
-        var projectDescription = HTMLprojectDescription.replace('%data%', projects.project[item].description);
+        var projectDescription = HTMLprojectDescription.replace('%data%', projects.projects[item].description);
         $('.project-entry:last').append(projectDescription);
 
-        if (projects.project[item].image.length) {
+        if (projects.projects[item].image.length) {
             var n = 0;
-            while (n < projects.project[item].image.length) {
+            while (n < projects.projects[item].image.length) {
                 n++;
-                var projectImages = HTMLprojectImage.replace('%data%', projects.project[item].image);
+                var projectImages = HTMLprojectImage.replace('%data%', projects.projects[item].image);
                 $('.project-entry:last').append(projectImages);
             }
         }
