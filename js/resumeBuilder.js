@@ -8,6 +8,7 @@ var bio = {
         "email": "syhming@gmail.com",
         "github": "syhming",
         "twitter": "@syhming",
+        "mobile": "555-5555",
         "location": "Holland, MI"
     },
     "skills": ["HTML", "CSS", "javascript", "illustration", "painting", "photography", "drawing"],
@@ -18,16 +19,14 @@ bio.display = function() {
     var headerName = HTMLheaderName.replace('%data%', bio.name);
     var headerRole = HTMLheaderRole.replace('%data%', bio.role);
 
-    //TODO make github and twitter links aligned with the rest of contacts
     var headerEmail = HTMLemail.replace('%data%', bio.contacts.email);
-    $('#topContacts').append(headerEmail);
     var headerGithub = HTMLgithub.replace('%data%', bio.contacts.github);
-    $('#topContacts').append(headerGithub);
     var headerTwitter = HTMLtwitter.replace('%data%', bio.contacts.twitter);
-    $('#topContacts').append(headerTwitter);
+    var headerMobile = HTMLmobile.replace('%data%', bio.contacts.mobile);
     var headerLocation = HTMLlocation.replace('%data%', bio.contacts.location);
-    $('#topContacts').append(headerLocation);
     var headerMessage = HTMLwelcomeMsg.replace('%data%', bio.welcomeMessage);
+
+    $('#topContacts').append(headerEmail, headerGithub, headerTwitter, headerMobile, headerLocation);
     $('#header').append(headerMessage);
 
     if (bio.skills.length > 0) {
@@ -41,10 +40,11 @@ bio.display = function() {
 
     var formattedBioPic = HTMLbioPic.replace('%data%', bio.biopic);
     $('#header').prepend(formattedBioPic, headerName, headerRole);
-    $('#footerContacts').append(headerEmail, headerTwitter, headerGithub);
+    $('#footerContacts').append(headerEmail, headerTwitter, headerGithub, headerMobile);
 };
 bio.display();
 
+//function that enable the internationalize name button to change the last name into all uppercase
 function inName(name) {
     name = name.trim().split(' ');
     console.log(name);
@@ -107,7 +107,7 @@ work.display();
 /*info on schools, certifications and online courses taken*/
 var education = {
     "schools": [{
-        "school": "Michigan State University",
+        "name": "Michigan State University",
         "location": "East Lansing, MI, US",
         "degree": "BFA",
         "majors": "Studio Art",
@@ -136,7 +136,7 @@ education.display = function() {
     if (education.schools.length) {
         for (var school = 0; school < education.schools.length; school++) {
             $('#education').append(HTMLschoolStart);
-            var schoolName = HTMLschoolName.replace('%data%', education.schools[school].school).replace('#', education.schools[school].url);
+            var schoolName = HTMLschoolName.replace('%data%', education.schools[school].name).replace('#', education.schools[school].url);
             var schoolDegree = HTMLschoolDegree.replace('%data%', education.schools[school].degree);
             var schoolNameDegree = schoolName + schoolDegree;
             $('.education-entry:last').append(schoolNameDegree);
